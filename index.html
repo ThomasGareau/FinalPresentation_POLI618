@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="author" content="Thomas Gareau-Paquette" />
     <script src="index_files/header-attrs-2.14/header-attrs.js"></script>
+    <script src="index_files/kePrint-0.0.1/kePrint.js"></script>
+    <link href="index_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -29,7 +31,7 @@ class: center, middle, inverse, title-slide
 
 
 
----
+
 # The Question (1)
 
 * Even though the Parti Conservateur du Québec (PCQ) did not succeed in electing any members to the Assemblée Nationale in the October 2022 provincial election in Quebec, the party nonetheless won 12.9% of the popular vote, up from 1% in the 2018 election:  
@@ -43,22 +45,71 @@ class: center, middle, inverse, title-slide
 ---
 # The Question (2)
 
+*  The question remains as to which of these issue dimensions drove support for the PCQ the most:
+
+
 ---
 # The data
+
+* Using individual-level survey data from the Quebec Election Study, we assess the degree to which these various factors explaining support, in addition to leader evaluation, explain PCQ vote choice in the 2022 Provincial election.
 
 * Panel data (Pre-election and post-election)
   * Very little **attrition**:
 
+
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Attrition, 2022 Quebec Election Study&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;    &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PES: Did Not Respond &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PES: Responded &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; All &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; CPS: Responded &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; N &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 301 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1220 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1521 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; % &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 100.0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 ---  
   
 * The questionnaire was available in **French** or **English**
 
 
----
-# Variables dépendantes
 
-## Distribution - Échelle standardisée d'anxiété (GAD-7)
+---
+# The Theory
+
+* The original funnel of causality (left) led to the creation of the its Quebec iteration (right). 
+
+* 
+
+.pull-left[![Source: Bélanger et al. 2022](Plots/funnel_gen.png)
+
+* **Source:** Bélanger et al. 2022
+
+]
+.pull-right[![Source: Campbell et al. 1960](Plots/funnel_quebec.png)
+
+* **Source:** Campbell et al. 1960
+]
+
 
 
 
@@ -103,7 +154,8 @@ Au cours des deux dernières semaines
 <script>var slideshow = remark.create({
 "highlightStyle": "solarized-dark",
 "highlightLines": true,
-"countIncrementalSlides": true
+"countIncrementalSlides": true,
+"fig_caption": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

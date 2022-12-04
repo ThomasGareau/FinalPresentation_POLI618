@@ -11,17 +11,16 @@ output:
       highlightStyle: solarized-dark
       highlightLines: true
       countIncrementalSlides: TRUE
+      fig_caption: true
 editor_options: 
   chunk_output_type: console
 ---
-```{r setup, include=FALSE}
-# ouvrir mandat_31mai et mandat_30juin
-
+```{r setup, include=TRUE, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE, message=FALSE}
+```{r xaringan-themer, include=TRUE, warning=FALSE, message=FALSE}
 library(xaringanthemer)
 library(magrittr)
 library(tidyverse)
@@ -31,16 +30,18 @@ library(lubridate)
 library(modelsummary)
 
 style_mono_accent(
-  base_color = "#1c5253",
+  base_color = "#1c3753",
   header_font_google = google_font("Josefin Sans"),
   text_font_google   = google_font("Montserrat", "300", "300i"),
   code_font_google   = google_font("Fira Mono")
 )
 ```
 
+```{r}
+df <- read_dta("QES_2022/Quebec Election Study 2022.dta")
+```
 
 
----
 # The Question (1)
 
 * Even though the Parti Conservateur du Québec (PCQ) did not succeed in electing any members to the Assemblée Nationale in the October 2022 provincial election in Quebec, the party nonetheless won 12.9% of the popular vote, up from 1% in the 2018 election:  
@@ -54,22 +55,50 @@ style_mono_accent(
 ---
 # The Question (2)
 
+*  The question remains as to which of these issue dimensions drove support for the PCQ the most:
+
+
 ---
 # The data
+
+* Using individual-level survey data from the Quebec Election Study, we assess the degree to which these various factors explaining support, in addition to leader evaluation, explain PCQ vote choice in the 2022 Provincial election.
 
 * Panel data (Pre-election and post-election)
   * Very little **attrition**:
 
+```{r, include = T}
+df <- df %>%
+  mutate(CPS = ifelse(!is.na(cps_weight_general), "CPS: Responded", NA),
+         PES = ifelse(!is.na(pes_weight_general), "PES: Responded", "PES: Did Not Respond"))
+```
+
+```{r, include = T}
+datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df, title = "Attrition, 2022 Quebec Election Study")
+```
 
 ---  
   
 * The questionnaire was available in **French** or **English**
 
 
----
-# Variables dépendantes
 
-## Distribution - Échelle standardisée d'anxiété (GAD-7)
+---
+# The Theory
+
+* The original funnel of causality (left) led to the creation of the its Quebec iteration (right). 
+
+* 
+
+.pull-left[![Source: Bélanger et al. 2022](Plots/funnel_gen.png)
+
+* **Source:** Bélanger et al. 2022
+
+]
+.pull-right[![Source: Campbell et al. 1960](Plots/funnel_quebec.png)
+
+* **Source:** Campbell et al. 1960
+]
+
 
 
 
