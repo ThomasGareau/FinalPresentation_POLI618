@@ -41,9 +41,13 @@ style_mono_accent(
 
 
 ---
-# Test
+# The Question
 
-Test
+
+* 
+
+---
+# The data
 
 ---
 # Variables dépendantes
@@ -83,3 +87,7 @@ Au cours des deux dernières semaines
 ]
 
 .pull-right[.]
+
+
+---
+# 
