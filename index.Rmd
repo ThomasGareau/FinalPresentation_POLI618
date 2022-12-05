@@ -135,7 +135,7 @@ datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df, titl
 ---
 ## Dependent Variable
 
-* Logit/Linear Probability Models (LPMs)
+* Statistical Analyses: Linear Probability Models (LPMs) and Logistic Regressions (logit)
 
   * Dependent Variable is a **dichotomous** variable, in which **1 = Voted for the PCQ in the 2022 Election.**
   
@@ -148,7 +148,7 @@ datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df, titl
 N <- function(x) sum(x, na.rm = TRUE)
 
 datasummary(vote_PCQ ~ Mean + SD + N,
-            data = df)
+            data = df, caption = "DV: Voting for the PCQ (binary)")
 ```
 
 ---
@@ -220,7 +220,7 @@ datasummary(vote_PCQ ~ Mean + SD + N,
 <br>
 <br>
 <br>
-<br>
+
 
 * **Bloc 4 should not be included in our estimation of the effect of Economic Conservatism/COVID Dissatisfaction, as it is causally prior.**
 
@@ -286,6 +286,9 @@ class: center
 
 
 ![](Plots/modelGLM.png)
+
+
+![](Plots/modelGLM_alt.png)
 
 
 ---
