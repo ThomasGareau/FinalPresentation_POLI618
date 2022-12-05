@@ -52,7 +52,7 @@ set_theme(
 ```
 
 
-## The Question
+## Research Question
 
 * Even though the Parti Conservateur du Québec (PCQ) did not succeed in electing any members to the Assemblée Nationale in the October 2022 provincial election in Quebec, the party nonetheless won 12.9% of the popular vote, up from 1.5% in the 2018 election:  
 
@@ -124,11 +124,10 @@ datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df, titl
 ---
 ## Data & Survey Design (2)
 
-* In terms of vote choice, our sample is (sort of) representative:
+* In terms of vote choice, our sample is (sort of) representative, but our models will include survey weights that account for **demographics** and **voting choices**
+
 
 ![](Plots/PopVSsample.png)
-
-* Our models include survey weights that account for **demographics** and **voting choices**
 
 
 
@@ -228,14 +227,12 @@ datasummary(vote_PCQ ~ Mean + SD + N,
 ---
 class: scrollable-slide
 
-## Linear Probability Model
+## LPM: Predicting the PCQ Vote (1)
 
 ```{r, warning=FALSE, message=FALSE}
-lpm_2 <- lm(vote_PCQ ~  age + gender + factor(education_cat) + factor(income_cat5) + language + MarketLib_index + moralT_index + integration_index + indy, data = df)
+lpm_2 <- lm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy, data = df, weights = pes_weight_general_vc)
 
-lpm_3 <- lm(vote_PCQ ~  age + gender + factor(education_cat) + factor(income_cat5) + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df)
-
-# got rid of gunv, 3e lien
+lpm_3 <- lm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df, weights = pes_weight_general_vc)
 ```
 
 
@@ -247,19 +244,71 @@ modelsummary(list("Bloc 2" = lpm_2, "Bloc 3" = lpm_3), caption = "LPM - Predicti
 ---
 class: center
 
-## Linear Probability Model
+## LPM: Predicting the PCQ Vote (2)
 
 ![](Plots/modelLPM.png)
+---
+class: scrollable-slide
+
+## LPM: Predicting the PCQ Vote (3)
+
+![](Plots/PredLPM1.png)
+
+
+![](Plots/PredLPM2.png)
+
+
+
+
+---
+class: scrollable-slide
+
+## Logistic Regression: Predicting the PCQ Vote (1)
+
+```{r}
+glm_2 <- glm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy, data = df, family = "binomial", weights = pes_weight_general_vc)
+
+glm_3 <- glm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df, family = "binomial", weights = pes_weight_general_vc)
+
+# got rid of gunv, 3e lien
+```
+
+
+```{r, exclude = FALSE}
+modelsummary(list("Bloc 1 and 2" = lpm_2, "Bloc 1, 2 and 3" = lpm_3), caption = "Logit - Predicting the Conservative Vote", stars = TRUE, output = "html")
+```
+
+
+---
+class: center
+
+## Logistic Regression: Predicting the PCQ Vote (2)
+
+
+![](Plots/modelGLM.png)
+
+
+---
+class: scrollable-slide
+
+## Logistic Regression: Predicting the PCQ Vote (3)
+
+![](Plots/PredGLM1.png)
+
+
+![](Plots/PredGLM2.png)
+
+
+
 
 
 ---
 # Next Steps
 
 * Add Bloc 4 (Leader Evaluation & Strategic Considerations) and (maybe) other variables
-  * Regions
-  * Vaccination Status?
-  * Cynism/Populism
-  * Authoritarian Values
+  * Regions (Bloc 1)
+  * Interaction: vaccination status?
+  * Cynism, Populism & Authoritarian Values
 
 * Additional Diagnostics
   * Robust Standard Errors

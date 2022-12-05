@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 
 
 
-## The Question
+## Research Question
 
 * Even though the Parti Conservateur du Québec (PCQ) did not succeed in electing any members to the Assemblée Nationale in the October 2022 provincial election in Quebec, the party nonetheless won 12.9% of the popular vote, up from 1.5% in the 2018 election:  
 
@@ -110,8 +110,8 @@ class: center, middle, inverse, title-slide
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; CPS: Responded &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; N &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1066 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1066 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1041 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1041 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -125,11 +125,10 @@ class: center, middle, inverse, title-slide
 ---
 ## Data &amp; Survey Design (2)
 
-* In terms of vote choice, our sample is (sort of) representative:
+* In terms of vote choice, our sample is (sort of) representative, but our models will include survey weights that account for **demographics** and **voting choices**
+
 
 ![](Plots/PopVSsample.png)
-
-* Our models include survey weights that account for **demographics** and **voting choices**
 
 
 
@@ -160,7 +159,7 @@ class: center, middle, inverse, title-slide
    &lt;td style="text-align:left;"&gt; vote_PCQ &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.14 &lt;/td&gt;
    &lt;td style="text-align:right;"&gt; 0.34 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 145.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 143.00 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -241,7 +240,7 @@ class: center, middle, inverse, title-slide
 ---
 class: scrollable-slide
 
-## Linear Probability Model
+## LPM: Predicting the PCQ Vote (1)
 
 
 
@@ -258,18 +257,18 @@ class: scrollable-slide
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.840*** &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.237** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.733*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.194* &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.077) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.084) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.075) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.082) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.002*** &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.001 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.003*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.001* &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -278,8 +277,8 @@ class: scrollable-slide
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; gender &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.024 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.010 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.003 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.016 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -287,19 +286,39 @@ class: scrollable-slide
    &lt;td style="text-align:center;"&gt; (0.017) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; factor(education_cat)CEGEP/some Higher Ed. &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.020 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.010 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; education_catCEGEP/some Higher Ed. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.022) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.019) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; education_catUni. Degree or more &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.022 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.014 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt; (0.027) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.023) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.024) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; factor(education_cat)Uni. Degree or more &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.011 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.021 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; income_cat52 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.054+ &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.032 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.030) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.025) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; income_cat53 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.030 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -307,9 +326,9 @@ class: scrollable-slide
    &lt;td style="text-align:center;"&gt; (0.024) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; factor(income_cat5)2 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.041 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.023 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; income_cat54 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.023 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.026 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -317,9 +336,9 @@ class: scrollable-slide
    &lt;td style="text-align:center;"&gt; (0.026) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; factor(income_cat5)3 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.023 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.007 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; income_cat55 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.016 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.024 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -327,79 +346,59 @@ class: scrollable-slide
    &lt;td style="text-align:center;"&gt; (0.025) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; factor(income_cat5)4 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.007 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.020 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.031) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.026) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; factor(income_cat5)5 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.024 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.031) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.026) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; languageEnglish &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.048 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.049 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.005 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.032 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.041) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.035) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.040) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.034) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; languageOther &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.067 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.103** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.054+ &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.126*** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.043) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.037) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.029) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.025) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; MarketLib_index &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.685*** &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.458*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.573*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.422*** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.067) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.060) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.071) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.062) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; moralT_index &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.344*** &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.175** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.383*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.186** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.066) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.059) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.069) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.063) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; integration_index &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.316*** &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.079+ &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.294*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.116* &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt; (0.049) &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.045) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.047) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; indy &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.009 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.001 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.026 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -409,57 +408,37 @@ class: scrollable-slide
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; economy &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.026 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.020 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.023) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.024) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; covidDis_index &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.546*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.572*** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.030) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.031) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; immig_index &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.085 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.136* &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.063) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.065) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_economy &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.043 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.038) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; issue_health &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.086** &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.033) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; issue_enviro &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.130*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.120** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -467,29 +446,49 @@ class: scrollable-slide
    &lt;td style="text-align:center;"&gt; (0.037) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; issue_education &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; issue_health &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.135** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.114*** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.049) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.032) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_enviro &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.156*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.040) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_education &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.198*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.052) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_imm &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.045 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.034 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.086) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.097) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_housing &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.193*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.143** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
@@ -499,42 +498,42 @@ class: scrollable-slide
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_taxes &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.002 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.061 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.050) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.053) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_indy &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.146** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.158** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.056) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.061) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_col &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.064+ &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.087** &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; (0.033) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.032) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; issue_fr &lt;/td&gt;
    &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −0.104* &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.120* &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
    &lt;td style="text-align:center;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.049) &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.047) &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
@@ -543,28 +542,33 @@ class: scrollable-slide
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; R2 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.259 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.475 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.227 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.457 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; R2 Adj. &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.249 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 0.461 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.216 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.443 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; AIC &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 453.7 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 116.1 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 820.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 475.1 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; BIC &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 532.9 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; 259.6 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 899.2 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 618.5 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Log.Lik. &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −210.857 &lt;/td&gt;
-   &lt;td style="text-align:center;"&gt; −29.071 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −394.002 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −208.539 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21.520 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; RMSE &lt;/td&gt;
@@ -580,19 +584,396 @@ class: scrollable-slide
 ---
 class: center
 
-## Linear Probability Model
+## LPM: Predicting the PCQ Vote (2)
 
 ![](Plots/modelLPM.png)
+---
+class: scrollable-slide
+
+## LPM: Predicting the PCQ Vote (3)
+
+![](Plots/PredLPM1.png)
+
+
+![](Plots/PredLPM2.png)
+
+
+
+
+---
+class: scrollable-slide
+
+## Logistic Regression: Predicting the PCQ Vote (1)
+
+
+
+
+&lt;table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table"&gt;
+&lt;caption&gt;Logit - Predicting the Conservative Vote&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Bloc 1 and 2 &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Bloc 1, 2 and 3 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; (Intercept) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.733*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.194* &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.075) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.082) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; age &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.003*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.001* &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.001) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.001) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; gender &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.003 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.016 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.020) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.017) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; education_catCEGEP/some Higher Ed. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.022) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.019) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; education_catUni. Degree or more &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.022 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.014 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.027) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.024) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; income_cat52 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.054+ &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.032 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.030) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.025) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; income_cat53 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.030 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.003 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.028) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.024) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; income_cat54 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.023 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.026 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.030) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.026) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; income_cat55 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.016 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.024 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.029) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.025) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; languageEnglish &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.005 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.032 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.040) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.034) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; languageOther &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.054+ &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.126*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.029) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.025) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; MarketLib_index &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.573*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.422*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.071) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.062) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; moralT_index &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.383*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.186** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.069) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.063) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; integration_index &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.294*** &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.116* &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.049) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.047) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; indy &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.026 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.022) &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.019) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; economy &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.020 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.024) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; covidDis_index &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.572*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.031) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; immig_index &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.136* &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.065) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_economy &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.120** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.037) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_health &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.114*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.032) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_enviro &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.156*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.040) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_education &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.198*** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.052) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_imm &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.034 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.097) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_housing &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.143** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.051) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_taxes &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.061 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.053) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_indy &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.158** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.061) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_col &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.087** &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; (0.032) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue_fr &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −0.120* &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:center;box-shadow: 0px 1px"&gt; (0.047) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Num.Obs. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 1041 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 1039 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; R2 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.227 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.457 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; R2 Adj. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.216 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.443 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; AIC &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 820.0 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 475.1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; BIC &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 899.2 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 618.5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Log.Lik. &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −394.002 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; −208.539 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21.520 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; RMSE &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.30 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 0.25 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; + p &amp;lt; 0.1, * p &amp;lt; 0.05, ** p &amp;lt; 0.01, *** p &amp;lt; 0.001&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;
+
+
+---
+class: center
+
+## Logistic Regression: Predicting the PCQ Vote (2)
+
+
+![](Plots/modelGLM.png)
+
+
+---
+class: scrollable-slide
+
+## Logistic Regression: Predicting the PCQ Vote (3)
+
+![](Plots/PredGLM1.png)
+
+
+![](Plots/PredGLM2.png)
+
+
+
 
 
 ---
 # Next Steps
 
 * Add Bloc 4 (Leader Evaluation &amp; Strategic Considerations) and (maybe) other variables
-  * Regions
-  * Vaccination Status?
-  * Cynism/Populism
-  * Authoritarian Values
+  * Regions (Bloc 1)
+  * Interaction: vaccination status?
+  * Cynism, Populism &amp; Authoritarian Values
 
 * Additional Diagnostics
   * Robust Standard Errors
