@@ -28,6 +28,7 @@ library(magrittr)
 library(tidyverse)
 library(kableExtra)
 library(lubridate)
+library(haven)
 library(modelsummary)
 library(sjPlot)
 style_mono_accent(
@@ -40,6 +41,7 @@ style_mono_accent(
 
 ```{r}
 load("QES_2022/QES_cleaned.Rda")
+df_attrition <- read_dta("QES_2022/Quebec Election Study 2022.dta")
 ```
 
 ```{r}
@@ -60,7 +62,6 @@ set_theme(
 **Which of the two issue dimensions drove the PCQ's success the most?** 
 
 
-
 .pull-left[![img](Plots/results_2012TO2022.png)]
 .pull-right[![img](Plots/results_2012TO2022_best.png)]
 
@@ -70,6 +71,8 @@ set_theme(
 * The dominant approach in the study of elections has followed the “multistage model", which leverages the metaphor of the “funnel of causality” initially developed by Cambell et al. (1960). 
 
 * In a nutshell, the funnel includes different ‘blocs’ or ‘stages’ of variables that represent the causal relationships between explanatory variables and vote choice. This model has also been used to study political behavior in Quebec (Bélenager et al. 2022):
+
+
 
 .pull-left[![Source: Bélanger et al. 2022](Plots/funnel_gen.png)
 
@@ -97,6 +100,7 @@ set_theme(
 
 1. (Dis)Satisfaction with COVID-related health policies by the Legault Government $\rightarrow{}$ **BLOC 3**
 
+
 ---
 ## Data & Survey Design (1)
 
@@ -111,14 +115,15 @@ set_theme(
 
 
 ```{r, include = T}
-df <- df %>%
+df_attrition <- df_attrition %>%
   mutate(CPS = ifelse(!is.na(cps_weight_general), "CPS: Responded", NA),
          PES = ifelse(!is.na(pes_weight_general), "PES: Responded", "PES: Did Not Respond"))
 ```
 
 ```{r, include = T}
-datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df, title = "Attrition, 2022 Quebec Election Study")
+datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df_attrition, title = "Attrition, 2022 Quebec Election Study")
 ```
+
 
 ---
 ## Data & Survey Design (2)
@@ -127,6 +132,7 @@ datasummary_crosstab(CPS ~ PES, statistic = ~ N + Percent() + 1, data = df, titl
 
 
 ![](Plots/PopVSsample.png)
+
 
 
 
