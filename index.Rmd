@@ -5,13 +5,15 @@ author:
   - "Thomas Gareau-Paquette"
 output:
   xaringan::moon_reader:
-    css: xaringan-themer.css
+    css: ["xaringan-themer.css", "scrollable.css"]
     nature:
       countdown: 30000
       highlightStyle: solarized-dark
       highlightLines: true
       countIncrementalSlides: TRUE
       fig_caption: true
+      navigation:
+        scroll: false
 editor_options: 
   chunk_output_type: console
 ---
@@ -27,7 +29,7 @@ library(tidyverse)
 library(kableExtra)
 library(lubridate)
 library(modelsummary)
-
+library(sjPlot)
 style_mono_accent(
   base_color = "#1c3753",
   header_font_google = google_font("Josefin Sans"),
@@ -38,6 +40,15 @@ style_mono_accent(
 
 ```{r}
 load("QES_2022/QES_cleaned.Rda")
+```
+
+```{r}
+set_theme(
+  title.size = 1,
+  geom.label.color = "grey50",
+  axis.textsize.y = 0.7,
+  legend.pos = "bottom",
+  base = theme_bw())
 ```
 
 
@@ -168,6 +179,7 @@ datasummary(vote_PCQ ~ Mean + SD + N,
 * Moral Traditionalism index (i.e., "lifestyles")
 
 * Integration Index
+
 * Independence
 
 ]
@@ -192,9 +204,7 @@ datasummary(vote_PCQ ~ Mean + SD + N,
 * Healthcare
 * Environment
 * Education
-* Poverty
-* Housing Crisis
-* Integrity & Corruption]
+* Housing Crisis]
 
   .pull-right[ 
 
@@ -202,9 +212,7 @@ datasummary(vote_PCQ ~ Mean + SD + N,
 * Sovereignty
 * Cost of living
 * Immigration
-* Quebec City's Third Link
-* The French Language
-* Gun violence]
+* The French Language]
 
 <br>
 <br>
@@ -218,8 +226,30 @@ datasummary(vote_PCQ ~ Mean + SD + N,
 * **Bloc 4 should not be included in our estimation of the effect of Economic Conservatism/COVID Dissatisfaction, as it is causally prior.**
 
 ---
-# Results
+class: scrollable-slide
 
+## Linear Probability Model
+
+```{r, warning=FALSE, message=FALSE}
+lpm_2 <- lm(vote_PCQ ~  age + gender + factor(education_cat) + factor(income_cat5) + language + MarketLib_index + moralT_index + integration_index + indy, data = df)
+
+lpm_3 <- lm(vote_PCQ ~  age + gender + factor(education_cat) + factor(income_cat5) + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df)
+
+# got rid of gunv, 3e lien
+```
+
+
+```{r, exclude = FALSE}
+modelsummary(list("Bloc 2" = lpm_2, "Bloc 3" = lpm_3), caption = "LPM - Predicting the Conservative Vote", stars = TRUE, output = "html")
+```
+
+
+---
+class: center
+
+## Linear Probability Model
+
+![](Plots/modelLPM.png)
 
 
 ---
