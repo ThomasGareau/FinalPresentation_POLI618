@@ -32,73 +32,25 @@ class: center, middle, inverse, title-slide
 
 
 
-# The Question (1)
+## The Question
 
-* Even though the Parti Conservateur du Québec (PCQ) did not succeed in electing any members to the Assemblée Nationale in the October 2022 provincial election in Quebec, the party nonetheless won 12.9% of the popular vote, up from 1% in the 2018 election:  
+* Even though the Parti Conservateur du Québec (PCQ) did not succeed in electing any members to the Assemblée Nationale in the October 2022 provincial election in Quebec, the party nonetheless won 12.9% of the popular vote, up from 1.5% in the 2018 election:  
 
-* During the electoral campaign, the PCQ (and its leader, Éric Duhaime) attracted considerable media attention. The party campaigned on topics **associated with the economic right** (with a clear agenda of state reduction) as well as dissatisfaction with the Legault government, particularly its **COVID-19 health measure.**
+* The party (and its leader, Éric Duhaime) campaigned on topics **associated with the economic right** (with a clear agenda of state reduction) as well as dissatisfaction with the Legault government, particularly its **COVID-19 health measure.**
+
+**Which of the two issue dimensions drove the PCQ's success the most?** 
+
 
 
 .pull-left[![img](Plots/results_2012TO2022.png)]
 .pull-right[![img](Plots/results_2012TO2022_best.png)]
 
 ---
-# The Question (2)
+## Theory and Hypotheses (1)
 
-*  The question remains as to which of these issue dimensions drove support for the PCQ the most:
+* The dominant approach in the study of elections has followed the “multistage model", which leverages the metaphor of the “funnel of causality” initially developed by Cambell et al. (1960). 
 
-
----
-# The data
-
-* Using individual-level survey data from the Quebec Election Study, we assess the degree to which these various factors explaining support, in addition to leader evaluation, explain PCQ vote choice in the 2022 Provincial election.
-
-* Panel data (Pre-election and post-election)
-  * Very little **attrition**:
-
-
-
-&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
-&lt;caption&gt;Attrition, 2022 Quebec Election Study&lt;/caption&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt;    &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; PES: Did Not Respond &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; PES: Responded &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; All &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; CPS: Responded &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; N &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 301 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1220 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1521 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; % &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 19.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 80.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 100.0 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
----  
-  
-* The questionnaire was available in **French** or **English**
-
-
-
----
-# The Theory
-
-* The original funnel of causality (left) led to the creation of the its Quebec iteration (right). 
-
-* 
+* In a nutshell, the funnel includes different ‘blocs’ or ‘stages’ of variables that represent the causal relationships between explanatory variables and vote choice. This model has also been used to study political behavior in Quebec (Bélenager et al. 2022):
 
 .pull-left[![Source: Bélanger et al. 2022](Plots/funnel_gen.png)
 
@@ -111,43 +63,306 @@ class: center, middle, inverse, title-slide
 ]
 
 
+---
+## Theory and Hypotheses (2)
+
+* `\(H_0 =\)` Factors associated with the economic right, dissatisfaction with Legault government, and leader evaluation do not explain PCQ vote choice in the 2022 Provincial election.
+
+* `\(H_1 =\)` Factors associated with the economic right explain PCQ vote choice in the 2022 Provincial election.
+
+* `\(H_2 =\)` In the 2022 provincial election, the PCQ vote is explained by factors related to dissatisfaction with the Legault government regarding COVID-19.             
+
+&lt;br&gt;
+
+1. "Market Liberalism" (i.e., Economic Conservatism) `\(\rightarrow{}\)` **BLOC 2**
+
+1. (Dis)Satisfaction with COVID-related health policies by the Legault Government `\(\rightarrow{}\)` **BLOC 3**
+
+---
+## Data &amp; Survey Design (1)
+
+
+* Using individual-level survey data from the 2022 Quebec Election Study, we assess the degree to which these two factors can explain support for the PCQ.
+
+&lt;br&gt;
+
+
+* Panel data (Pre-election and post-election questionnaires) 
+  * Very little **attrition**:
+
+
+
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Attrition, 2022 Quebec Election Study&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt;    &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; PES: Responded &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; All &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; CPS: Responded &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; N &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1066 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1066 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; % &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 100.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 100.0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+## Data &amp; Survey Design (2)
+
+* In terms of vote choice, our sample is (sort of) representative:
+
+![](Plots/PopVSsample.png)
+
+* Our models include survey weights that account for **demographics** and **voting choices**
+
 
 
 
 ---
-# Variables dépendantes
+## Dependent Variable
 
-## Questions - Échelle standardisée de stress (Perceived Stress Scale 4)
+* Logit/Linear Probability Models (LPMs)
 
-Au cours des deux dernières semaines
+  * Dependent Variable is a **dichotomous** variable, in which **1 = Voted for the PCQ in the 2022 Election.**
+  
+&lt;br&gt;
+ 
+&lt;br&gt;
 
-- À 
-- À
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Mean &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; SD &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; N &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; vote_PCQ &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.34 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 145.00 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 ---
-# Variables dépendantes
+## Independent Variables (1)
 
-##  Distribution - Échelle standardisée de stress (Perceived Stress Scale 4)
+.pull-left[**Bloc 1:**
+
+* Age (or Generation)
+&lt;br&gt;
+* Gender
+
+* Education (3 categories)
+
+* Income (5 quintiles)
+
+* Language
+
+* Holdings ("patrimoine")
+]
+.pull-right[**Bloc 2:**
+
+* Ideology (self-placement)
 
 
+* **Market Liberalism index (i.e., Economic Conservatism)**
 
----
+* Moral Traditionalism index (i.e., "lifestyles")
 
-# Variables dépendantes
+* Integration Index
+* Independence
 
-## Questions - Échelle standardisée de dépression (CES-D)
-
-* 
-
-.pull-left[
-- Je n’ai pas eu envie de manger, j’avais peu d’appétit
 ]
 
-.pull-right[.]
+
+---
+## Independent Variables (2)
+
+**Bloc 3:**
+
+* Evaluation of the economy
+
+* **COVID-19 Dissatisfaction Index**
+
+* Anti-Immigration Index
+
+  
+* Most Imporant Issue (Closed Choices [Coded Binary])
+ .pull-left[
+ 
+* Economy
+* Healthcare
+* Environment
+* Education
+* Poverty
+* Housing Crisis
+* Integrity &amp; Corruption]
+
+  .pull-right[ 
+
+* Taxes
+* Sovereignty
+* Cost of living
+* Immigration
+* Quebec City's Third Link
+* The French Language
+* Gun violence]
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+* **Bloc 4 should not be included in our estimation of the effect of Economic Conservatism/COVID Dissatisfaction, as it is causally prior.**
+
+---
+# Results
+
 
 
 ---
-# 
+# Next Steps
+
+* Add Bloc 4 (Leader Evaluation &amp; Strategic Considerations) and (maybe) other variables
+  * Regions
+  * Vaccination Status?
+  * Cynism/Populism
+  * Authoritarian Values
+
+* Additional Diagnostics
+  * Robust Standard Errors
+  * Influence plot
+  * VIF for multicollinearity
+
+* Factor Analysis (for indexes)
+
+* Multiple Imputation (for planned missingness)
+  
+* Other Models?
+  * Examine the factors that influenced the votes of PCQ voters, PCQ supporters, and those who say PCQ is their second choice.
+
+  
+---
+# Appendix (1)
+## Market Liberalism
+
+*  *The government should leave it entirely to the private sector to create jobs.*
+&lt;br&gt;
+
+* *Government should see to it that everyone has a decent standard of living.*
+
+
+* *How appropriate do you think it is for the Quebec government to spend more than its income in any given year?*
+
+
+* *How much do you think should be done to reduce the gap between the rich and the poor in Quebec?*
+
+
+---
+# Appendix (2)
+## COVID Dissatisfaction
+
+*  *How satisfied are you with the following governments' handling of the COVID-19 pandemic?*
+&lt;br&gt;
+
+* *How well has Quebec done in handling the COVID-19 pandemic in comparison to other provinces?*
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; covid_1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; covid_2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; covidDis_index &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; covid_1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; . &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; . &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; covid_2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; .84 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; . &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; covidDis_index &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; .96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; .96 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Appendix (3)
+## Moral Traditionalism
+
+*  *How much do you think should be done for lesbians and gay men in Quebec?*
+&lt;br&gt;
+
+* *Newer lifestyles are contributing to the breakdown of our society.*
+
+* *This country would have many fewer problems if there was more emphasis on traditional family values.* and *This province would have many fewer problems if there was more emphasis on traditional family values.* (planned missingness design)
+
+* *How much do you think should be done for women in Quebec?*
+
+* *Society would be better off if fewer women worked outside the home.*
+
+---
+# Appendix (4)
+## Integration (Defining Characteristics of Integration)
+
+*  *To be able to speak French.*
+&lt;br&gt;
+
+* *To respect Quebec's political institutions and laws.*
+
+
+* *To feel Québécois.*
+
+*  *To share Quebeckers’ values.*
+
+
+---
+# Appendix (5)
+## Anti-Immigration Index
+
+*  *Immigrants are generally good for Quebec's economy.*
+&lt;br&gt;
+
+* *Quebec's culture is generally harmed by immigrants.*
+
+
+* *Immigrants increase crime rates in Quebec.*
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
