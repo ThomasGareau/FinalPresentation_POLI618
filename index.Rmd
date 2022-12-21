@@ -235,9 +235,9 @@ class: scrollable-slide
 ## LPM: Predicting the PCQ Vote (1)
 
 ```{r, warning=FALSE, message=FALSE}
-lpm_2 <- lm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy, data = df, weights = pes_weight_general_vc)
+lpm_2 <- lm(vote_PCQ ~  region + age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy, data = df, weights = pes_weight_general)
 
-lpm_3 <- lm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df, weights = pes_weight_general_vc)
+lpm_3 <- lm(vote_PCQ ~  region + age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index, data = df, weights = pes_weight_general)
 ```
 
 
@@ -271,10 +271,9 @@ class: scrollable-slide
 ## Logistic Regression: Predicting the PCQ Vote (1)
 
 ```{r}
-glm_2 <- glm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy, data = df, family = "binomial", weights = pes_weight_general_vc)
+glm_2 <- glm(vote_PCQ ~  region + age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy, data = df, family = "binomial", weights = pes_weight_general)
 
-glm_3 <- glm(vote_PCQ ~  age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df, family = "binomial", weights = pes_weight_general_vc)
-
+glm_3 <- glm(vote_PCQ ~  region + age + gender + education_cat + income_cat5 + language + MarketLib_index + moralT_index + integration_index + indy + economy + covidDis_index + immig_index + issue_economy + issue_health + issue_enviro + issue_education + issue_imm + issue_housing + issue_taxes + issue_indy + issue_col + issue_fr, data = df, family = "binomial", weights = pes_weight_general)
 # got rid of gunv, 3e lien
 ```
 
